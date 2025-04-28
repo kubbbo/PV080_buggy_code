@@ -1,4 +1,4 @@
-import sys
+# import sys
 # import os
 import flask
 import yaml
@@ -30,7 +30,8 @@ def fetch_website(urllib_version, url):
 
     try:
         http = urllib.PoolManager()
-        req = http.request('GET', url)
+        # req =
+        http.request('GET', url)
     except:
         print('Exception')
 
@@ -40,7 +41,7 @@ def load_yaml(filename):
     deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
     return deserialized_data
 
-def authenticate(password):
+def authenticate(passwd):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
     print("Successfully authenticated!")
@@ -54,14 +55,14 @@ if __name__ == '__main__':
     print("4. Use of assert statements vulnerability:")
     choice = input("Select vulnerability: ")
     if choice == "1":
-        NEW_PERSON = Person("Vickie")
+        new_person = Person("Vickie")
         print_nametag(input("Please format your nametag: "), new_person)
     elif choice == "2":
-        URLIB_VERSION = input("Choose version of urllib: ")
+        urlib_version = input("Choose version of urllib: ")
         fetch_website(urlib_version, url="https://www.google.com")
     elif choice == "3":
         load_yaml(input("File name: "))
         print("Executed -ls on current folder")
     elif choice == "4":
-        PASSWORD = input("Enter master password: ")
-        authenticate(PASSWORD)
+        password = input("Enter master password: ")
+        authenticate(password)
